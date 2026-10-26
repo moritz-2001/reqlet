@@ -1,0 +1,58 @@
+# Dependencies and package-manager caches
+node_modules/
+.pnpm-store/
+.npm/
+
+# Frontend build output and tool caches
+/dist/
+/dist-ssr/
+.vite/
+.cache/
+*.tsbuildinfo
+
+# Rust build output (including crates and src-tauri); keep Cargo.lock files
+target/
+**/*.rs.bk
+
+# Wasm assets are regenerated from the Rust sources by scripts/build-wasm.mjs
+/src/wasm/generated/
+
+# Test and coverage output
+coverage/
+.nyc_output/
+
+# Local environment configuration; keep sanitized examples available to commit
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+
+# Reqlet workspace exports can contain credentials and execution history
+*.workspace.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor state; keep the shared extension recommendations
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# Operating-system metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,11 @@
+# Keeps reusable browser computations separate from the native Tauri application.
+[workspace]
+members = ["json-formatter", "json-formatter-wasm", "body-search", "body-search-wasm"]
+resolver = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

@@ -1,0 +1,24 @@
+// Example models for exploring request-body completion in the desktop app.
+syntax = "proto3";
+
+package demo;
+
+message CreateUserRequest {
+  // The user's given name, inserted as firstName in JSON.
+  string first_name = 1;
+  Role role = 2;
+  repeated Role roles = 3;
+  Address address = 4;
+  map<string, bool> feature_flags = 5;
+}
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ADMIN = 1;
+  USER = 2;
+}
+
+message Address {
+  string city = 1;
+  string postal_code = 2;
+}

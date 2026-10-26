@@ -1,0 +1,60 @@
+/* Opt-in native control appearance; components retain layout and interaction ownership. */
+.ui-button, .ui-input {
+  min-width: 0;
+  padding: var(--control-padding);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--control-font-size);
+  background: var(--color-control);
+  border: 1px solid var(--color-interactive-border);
+  border-radius: var(--control-radius);
+}
+
+.ui-button { cursor: pointer; }
+.ui-button:hover:not(:disabled) { background: var(--color-control-hover); }
+.ui-button:active:not(:disabled) { background: var(--color-control-active); }
+
+.ui-button--primary {
+  color: var(--color-primary-text);
+  font-weight: 600;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.ui-button--primary:hover:not(:disabled) { background: var(--color-primary-hover); }
+.ui-button--primary:active:not(:disabled) { background: var(--color-primary-active); }
+.ui-button--danger { color: var(--color-danger); }
+.ui-button--subtle { background: transparent; }
+
+.ui-button--link {
+  padding: 0;
+  color: var(--color-link);
+  font-size: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  text-decoration: underline;
+}
+
+.ui-button--link:hover:not(:disabled), .ui-button--link:active:not(:disabled) {
+  background: none;
+  text-decoration-thickness: 2px;
+}
+
+.ui-button--compact, .ui-input--compact {
+  padding: var(--control-compact-padding);
+  font-size: var(--control-compact-font-size);
+  border-radius: var(--control-compact-radius);
+}
+
+.ui-button:focus-visible, .ui-input:focus-visible {
+  outline: var(--control-focus-width) solid var(--color-focus);
+  outline-offset: var(--control-focus-offset);
+}
+
+.ui-button:disabled, .ui-input:disabled {
+  opacity: var(--control-disabled-opacity);
+  cursor: default;
+}
+
+.ui-input[aria-invalid="true"] { border-color: var(--color-invalid-border); }

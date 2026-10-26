@@ -1,0 +1,12 @@
+# Exposes the pure formatter to JavaScript without a generated binding toolchain.
+[package]
+name = "json-formatter-wasm"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+json-formatter = { path = "../json-formatter" }

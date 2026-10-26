@@ -1,0 +1,412 @@
+{
+  "date": "2026-10-26",
+  "environment": {
+    "browser": "Chrome 155",
+    "viewport": [
+      1280,
+      720
+    ],
+    "platform": "macOS",
+    "build": "production Vite",
+    "cache": "repeated loads after a warmup"
+  },
+  "startupBoundary": "After synthetic IndexedDB seeding, through application import, complete repository restoration, Vue mount, and two animation frames; excludes native process/window creation.",
+  "largeWorkspace": {
+    "before": [
+      {
+        "run": "baseline-large-repeat-1",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 130.80000001192093,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 45.39999997615814,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-large-repeat-2",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 137.89999997615814,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 44,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-large-repeat-3",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 131.19999998807907,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 53.09999996423721,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-large-repeat-4",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 134.69999998807907,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 44.90000003576279,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-large-repeat-5",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 128.9000000357628,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 58,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      }
+    ],
+    "after": [
+      {
+        "run": "updated-large-repeat-1",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 86.5,
+        "maxTaskMs": 53,
+        "maxTickGapMs": 56.80000001192093,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-large-repeat-2",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 86.09999996423721,
+        "maxTaskMs": 52,
+        "maxTickGapMs": 64,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-large-repeat-3",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 88.90000003576279,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 61,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-large-repeat-4",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 85.39999997615814,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 55,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-large-repeat-5",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 82.60000002384186,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 51.30000001192093,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2000,
+        "historyCount": 100,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      }
+    ]
+  },
+  "smallWorkspace": {
+    "before": [
+      {
+        "run": "baseline-small-repeat-1",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 38.39999997615814,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 17,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-small-repeat-2",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 41.89999997615814,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 17.5,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-small-repeat-3",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 38.30000001192093,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 19.69999998807907,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-small-repeat-4",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 51,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 17.5,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "baseline-small-repeat-5",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 37.19999998807907,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 17.299999952316284,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      }
+    ],
+    "after": [
+      {
+        "run": "updated-small-repeat-1",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 35.5,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 25.5,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-small-repeat-2",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 33.59999996423721,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 18.69999998807907,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-small-repeat-3",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 33.90000003576279,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 18.19999998807907,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-small-repeat-4",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 36.299999952316284,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 16.5,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      },
+      {
+        "run": "updated-small-repeat-5",
+        "mib": 1,
+        "name": "startup-after-seed",
+        "durationMs": 44.30000001192093,
+        "maxTaskMs": 0,
+        "maxTickGapMs": 17.899999976158142,
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+        "viewport": [
+          1280,
+          720
+        ],
+        "requestCount": 2,
+        "historyCount": 0,
+        "bodyMib": 0,
+        "tabCount": 2,
+        "fieldCount": 0
+      }
+    ]
+  },
+  "devServerReady": {
+    "command": "pnpm run dev --host 127.0.0.1 --port 17435",
+    "boundary": "Process start to Vite Local URL; excludes native build and webview mount.",
+    "beforeMs": [
+      675.6,
+      659.5,
+      671.4
+    ],
+    "afterMs": [
+      445.6,
+      428.7,
+      445.6
+    ]
+  },
+  "nativeClientInitialization": {
+    "freshProcessSamples": 10,
+    "medianMs": 5.07,
+    "minMs": 4.4,
+    "maxMs": 5.81,
+    "boundary": "reqwest Client build only, now deferred until the first execution."
+  },
+  "initialJavaScriptKB": {
+    "before": 836.87,
+    "after": 723.94,
+    "deferredOpenApi": 116.18
+  }
+}

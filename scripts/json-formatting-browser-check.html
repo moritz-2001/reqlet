@@ -1,0 +1,39 @@
+<!-- Exercises the real Vite worker and Wasm asset with synthetic text, without opening a saved workspace. -->
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>JSON formatting worker check</title>
+<h1>JSON formatting worker check</h1>
+<pre id="results">Running…</pre>
+<script type="module">
+import { formatJsonPreview } from "/src/components/jsonPreview.ts";
+import { formatJson } from "/src/components/formatJson.ts";
+
+const results = [];
+const preview = source => formatJsonPreview(source, new AbortController().signal);
+
+try {
+  const source = '{"id":9007199254740993,/* keep */"emoji":"😀","padding":"' + "x".repeat(70_000) + '",}';
+  const formatted = await preview(source);
+  check("real worker formats JSONC with exact token preservation",
+    formatted.status === "formatted" && formatted.text === formatJson(source));
+  check("malformed source is invalid", (await preview(source.slice(0, -1))).status === "invalid");
+  const deep = "[".repeat(1000) + "0" + "]".repeat(1000);
+  check("deep expansion respects the preview budget", (await preview(deep)).status === "too-large");
+
+  const controller = new AbortController();
+  const cancelled = formatJsonPreview(source, controller.signal);
+  controller.abort();
+  await cancelled.then(() => check("cancellation rejects unfinished work", false),
+    error => check("cancellation rejects unfinished work", error.name === "AbortError"));
+  document.querySelector("#results").textContent = JSON.stringify({ status: "passed", results }, null, 2);
+} catch (error) {
+  document.querySelector("#results").textContent = JSON.stringify({ status: "failed", error: String(error), results }, null, 2);
+}
+
+function check(name, passed) {
+  results.push({ name, passed });
+  if (!passed) throw new Error(name);
+}
+</script>
+</html>

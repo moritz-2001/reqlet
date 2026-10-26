@@ -1,0 +1,12 @@
+# Exposes retained UTF-16 source buffers and pure search queries to a browser worker.
+[package]
+name = "body-search-wasm"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+body-search = { path = "../body-search" }

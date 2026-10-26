@@ -1,0 +1,880 @@
+{
+  "date": "2026-10-26",
+  "comparisonRuns": {
+    "before": "baseline-fixed-1 through baseline-fixed-3",
+    "after": "after-fixed-{1,16,64}-{1,2,3}"
+  },
+  "before": [
+    {
+      "run": "baseline-1",
+      "mib": 1,
+      "name": "startup-after-seed",
+      "durationMs": 170,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.30000001192093,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-1",
+      "mib": 1,
+      "name": "click:Send",
+      "durationMs": 28.900000035762787,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "baseline-1",
+      "mib": 1,
+      "name": "response-visible",
+      "durationMs": 304.7000000476837,
+      "maxTaskMs": 242,
+      "maxTickGapMs": 272.60000002384186,
+      "summary": "30 ms · 1,048,576 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-1",
+      "mib": 1,
+      "name": "click:Find",
+      "durationMs": 23.900000035762787,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 10.300000011920929
+    },
+    {
+      "run": "baseline-1",
+      "mib": 1,
+      "name": "input:Find in body",
+      "durationMs": 89.29999995231628,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 55.39999997615814,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 19,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 2104.600000023842,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 6.100000023841858
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 2117.699999988079,
+      "maxTaskMs": 2074,
+      "maxTickGapMs": 2090.5,
+      "summary": "34 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "click:Find",
+      "durationMs": 28.299999952316284,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 14.399999976158142
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "input:Find in body",
+      "durationMs": 1198.5999999642372,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "click:Next",
+      "durationMs": 2483.699999988079,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "click:Small response",
+      "durationMs": 29.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 13.199999988079071
+    },
+    {
+      "run": "baseline-16",
+      "mib": 16,
+      "name": "click:16 MiB response, HTTP 200",
+      "durationMs": 28.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "baseline-16-b",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 58.60000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 21.5,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-16-b",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 2044.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 23.69999998807907
+    },
+    {
+      "run": "baseline-16-b",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 2108.899999976158,
+      "maxTaskMs": 2023,
+      "maxTickGapMs": 2081.900000035763,
+      "summary": "25 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-16-c",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 71.40000003576279,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 21.5,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        639,
+        822
+      ]
+    },
+    {
+      "run": "baseline-16-c",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 1932.699999988079,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 25.400000035762787
+    },
+    {
+      "run": "baseline-16-c",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 1946.300000011921,
+      "maxTaskMs": 1904,
+      "maxTickGapMs": 1916.8999999761581,
+      "summary": "37 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-16-d",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 62.39999997615814,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 24.799999952316284,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1163,
+        654
+      ]
+    },
+    {
+      "run": "baseline-16-d",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 31.80000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.899999976158142
+    },
+    {
+      "run": "baseline-16-d",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 2034.9000000357628,
+      "maxTaskMs": 1986,
+      "maxTickGapMs": 1997.7000000476837,
+      "summary": "47 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-fixed-1",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 49.59999996423721,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.100000023841858,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-fixed-1",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 18,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 23.899999976158142
+    },
+    {
+      "run": "baseline-fixed-1",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 1959.1000000238419,
+      "maxTaskMs": 1927,
+      "maxTickGapMs": 1945.300000011921,
+      "summary": "25 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-fixed-2",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 39.80000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.5,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-fixed-2",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 1860,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.19999998807907
+    },
+    {
+      "run": "baseline-fixed-2",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 1868.800000011921,
+      "maxTaskMs": 1838,
+      "maxTickGapMs": 1854,
+      "summary": "27 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 32.90000003576279,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.5,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 1780.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.899999976158142
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 1789.1000000238419,
+      "maxTaskMs": 1759,
+      "maxTickGapMs": 1771.0999999642372,
+      "summary": "26 ms · 16,777,216 bytes",
+      "renderedCharacters": 573,
+      "mode": "full"
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "click:Find",
+      "durationMs": 24,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.399999976158142
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "input:Find in body",
+      "durationMs": 1389.0999999642372,
+      "maxTaskMs": 1389,
+      "maxTickGapMs": 1402.3999999761581
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "search-finished",
+      "durationMs": 1389.3999999761581,
+      "maxTaskMs": 1389,
+      "maxTickGapMs": 1402.3999999761581,
+      "feedback": "1 match"
+    },
+    {
+      "run": "baseline-fixed-3",
+      "mib": 16,
+      "name": "click:Next",
+      "durationMs": 2984.5,
+      "maxTaskMs": 2979,
+      "maxTickGapMs": 0
+    }
+  ],
+  "after": [
+    {
+      "run": "after-16-a",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 43.89999997615814,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 15.599999964237213,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1163,
+        654
+      ]
+    },
+    {
+      "run": "after-16-a",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 37.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 14.400000035762787
+    },
+    {
+      "run": "after-16-a",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 47,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.5,
+      "summary": "30 ms · 16,777,216 bytes",
+      "renderedCharacters": 2110,
+      "mode": "paged"
+    },
+    {
+      "run": "after-64-a",
+      "mib": 64,
+      "name": "startup-after-seed",
+      "durationMs": 58.19999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.69999998807907,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1163,
+        654
+      ]
+    },
+    {
+      "run": "after-64-a",
+      "mib": 64,
+      "name": "click:Send",
+      "durationMs": 32.799999952316284,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.400000035762787
+    },
+    {
+      "run": "after-64-a",
+      "mib": 64,
+      "name": "response-visible",
+      "durationMs": 133.0999999642372,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 46.30000001192093,
+      "summary": "111 ms · 67,108,864 bytes",
+      "renderedCharacters": 2110,
+      "mode": "paged"
+    },
+    {
+      "run": "after-64-a",
+      "mib": 64,
+      "name": "click:Find",
+      "durationMs": 31.80000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 29.5
+    },
+    {
+      "run": "after-64-a",
+      "mib": 64,
+      "name": "input:Find in entire response",
+      "durationMs": 20.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 29.5
+    },
+    {
+      "run": "after-fixed-1-1",
+      "mib": 1,
+      "name": "startup-after-seed",
+      "durationMs": 48.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 39.40000003576279,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-1-1",
+      "mib": 1,
+      "name": "click:Send",
+      "durationMs": 28.69999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.19999998807907
+    },
+    {
+      "run": "after-fixed-1-1",
+      "mib": 1,
+      "name": "response-visible",
+      "durationMs": 44.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 19.80000001192093,
+      "summary": "14 ms · 1,048,576 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-1-2",
+      "mib": 1,
+      "name": "startup-after-seed",
+      "durationMs": 35.60000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.599999964237213,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-1-2",
+      "mib": 1,
+      "name": "click:Send",
+      "durationMs": 29.19999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 29.900000035762787
+    },
+    {
+      "run": "after-fixed-1-2",
+      "mib": 1,
+      "name": "response-visible",
+      "durationMs": 45.59999996423721,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 29.900000035762787,
+      "summary": "15 ms · 1,048,576 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-1-3",
+      "mib": 1,
+      "name": "startup-after-seed",
+      "durationMs": 34.10000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.600000023841858,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-1-3",
+      "mib": 1,
+      "name": "click:Send",
+      "durationMs": 28.69999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.900000035762787
+    },
+    {
+      "run": "after-fixed-1-3",
+      "mib": 1,
+      "name": "response-visible",
+      "durationMs": 45.09999996423721,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.900000035762787,
+      "summary": "15 ms · 1,048,576 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-16-1",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 38.80000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.600000023841858,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-16-1",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 29.399999976158142,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.30000001192093
+    },
+    {
+      "run": "after-fixed-16-1",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 45.60000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.80000001192093,
+      "summary": "23 ms · 16,777,216 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-16-2",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 37.90000003576279,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-16-2",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 30.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.69999998807907
+    },
+    {
+      "run": "after-fixed-16-2",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 45.60000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.900000035762787,
+      "summary": "24 ms · 16,777,216 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-16-3",
+      "mib": 16,
+      "name": "startup-after-seed",
+      "durationMs": 30.100000023841858,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-16-3",
+      "mib": 16,
+      "name": "click:Send",
+      "durationMs": 32.39999997615814,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 26.599999964237213
+    },
+    {
+      "run": "after-fixed-16-3",
+      "mib": 16,
+      "name": "response-visible",
+      "durationMs": 42.80000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 26.599999964237213,
+      "summary": "25 ms · 16,777,216 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-64-1",
+      "mib": 64,
+      "name": "startup-after-seed",
+      "durationMs": 42.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.299999952316284,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-64-1",
+      "mib": 64,
+      "name": "click:Send",
+      "durationMs": 27.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 21.5
+    },
+    {
+      "run": "after-fixed-64-1",
+      "mib": 64,
+      "name": "response-visible",
+      "durationMs": 127.60000002384186,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 51.5,
+      "summary": "109 ms · 67,108,864 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-64-2",
+      "mib": 64,
+      "name": "startup-after-seed",
+      "durationMs": 35.299999952316284,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17.30000001192093,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-64-2",
+      "mib": 64,
+      "name": "click:Send",
+      "durationMs": 27.099999964237213,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.099999964237213
+    },
+    {
+      "run": "after-fixed-64-2",
+      "mib": 64,
+      "name": "response-visible",
+      "durationMs": 127.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 44.5,
+      "summary": "99 ms · 67,108,864 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "startup-after-seed",
+      "durationMs": 43.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 19.69999998807907,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ]
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:Send",
+      "durationMs": 28.600000023841858,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 25.30000001192093
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "response-visible",
+      "durationMs": 112.40000003576279,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 50.40000003576279,
+      "summary": "93 ms · 67,108,864 bytes",
+      "renderedCharacters": 2124,
+      "mode": "paged"
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:Find",
+      "durationMs": 29.200000047683716,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.80000001192093
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "input:Find in entire response",
+      "durationMs": 8.200000047683716,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "search-finished",
+      "durationMs": 41.200000047683716,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.19999998807907,
+      "feedback": "Match at source positions 67,108,849–67,108,860. Search wraps; total matches are not counted."
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:Next",
+      "durationMs": 29.600000023841858,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 16.80000001192093
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:Small response",
+      "durationMs": 29.400000035762787,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.80000001192093
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:64 MiB response, HTTP 200",
+      "durationMs": 28.69999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 25.30000001192093
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "click:Download body",
+      "durationMs": 71.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 0
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "input:Find in entire response",
+      "durationMs": 22.399999976158142,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 15.600000023841858
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "search-finished",
+      "durationMs": 39.89999997615814,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 17,
+      "feedback": "No matches in the entire response."
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "input:Find in entire response",
+      "durationMs": 24.30000001192093,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 14.599999964237213
+    },
+    {
+      "run": "after-fixed-64-3",
+      "mib": 64,
+      "name": "search-finished",
+      "durationMs": 25.099999964237213,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 14.599999964237213,
+      "feedback": "Match at source positions 67,108,849–67,108,860. Search wraps; total matches are not counted."
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "startup-after-seed",
+      "durationMs": 54.799999952316284,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 27.5,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+      "viewport": [
+        727,
+        545
+      ]
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "click:Send",
+      "durationMs": 32.299999952316284,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 30.400000035762787
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "response-visible",
+      "durationMs": 138.19999998807907,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 50.80000001192093,
+      "summary": "114 ms · 67,108,864 bytes",
+      "renderedCharacters": 2054,
+      "mode": "paged"
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "click:More body actions",
+      "durationMs": 33,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 30.700000047683716
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "click:Find",
+      "durationMs": 33,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.69999998807907
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "input:Find in entire response",
+      "durationMs": 24.5,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 18.69999998807907
+    },
+    {
+      "run": "final-small",
+      "mib": 64,
+      "name": "search-finished",
+      "durationMs": 58,
+      "maxTaskMs": 0,
+      "maxTickGapMs": 20.099999964237213,
+      "feedback": "Match at source positions 67,108,849–67,108,860. Search wraps; total matches are not counted."
+    }
+  ]
+}

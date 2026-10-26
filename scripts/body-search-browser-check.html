@@ -1,0 +1,68 @@
+<!-- Verifies the real search worker, Wasm asset, source reuse, and cancellation using disposable synthetic text. -->
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Response search worker check</title>
+<h1>Response search worker check</h1>
+<pre id="results">Running…</pre>
+<script type="module">
+import { createLargeBodySearch } from "/src/components/largeBodySearch.ts";
+
+const results = [];
+const observed = { workers: 0, loads: 0, replies: 0, terminated: 0 };
+const NativeWorker = window.Worker;
+window.Worker = class extends NativeWorker {
+  constructor(url, options) {
+    super(url, options);
+    observed.workers += 1;
+    this.addEventListener("message", event => {
+      if (event.data.status !== "unavailable") observed.replies += 1;
+    });
+  }
+  postMessage(message) {
+    if (message.type === "load") observed.loads += 1;
+    super.postMessage(message);
+  }
+  terminate() {
+    observed.terminated += 1;
+    super.terminate();
+  }
+};
+
+const offset = 65534;
+const literal = "[K-ſ-Σ-𐐀]";
+const source = "x".repeat(offset) + literal + "x".repeat(1024 * 1024) + literal;
+const session = createLargeBodySearch(source);
+const find = (query, from = 0, direction = 1) => session.find(query, from, direction, new AbortController().signal);
+
+try {
+  const first = await find("[k-s-ς-𐐨]");
+  check("real Wasm worker finds a Unicode literal across a page boundary",
+    first?.from === offset && first.to === offset + literal.length && observed.replies === 1);
+  const previous = await find("[k-s-σ-𐐨]", offset, -1);
+  check("backward search wraps using original UTF-16 positions", previous?.to === source.length);
+  check("one source load serves repeated queries", observed.workers === 1 && observed.loads === 1);
+  check("missing text returns no match", await find("absent marker") === null);
+
+  const controller = new AbortController();
+  const cancelled = session.find("another absent marker", 0, 1, controller.signal);
+  controller.abort();
+  await cancelled.then(() => check("cancellation rejects unfinished work", false),
+    error => check("cancellation rejects unfinished work", error.name === "AbortError"));
+  check("cancelled queries preserve the worker for later searches", (await find("[k-s-σ-𐐨]"))?.from === offset);
+  session.dispose();
+  check("closing a session releases its worker", observed.terminated === 1);
+  document.querySelector("#results").textContent = JSON.stringify({ status: "passed", results, observed }, null, 2);
+} catch (error) {
+  document.querySelector("#results").textContent = JSON.stringify({ status: "failed", error: String(error), results, observed }, null, 2);
+} finally {
+  session.dispose();
+  window.Worker = NativeWorker;
+}
+
+function check(name, passed) {
+  results.push({ name, passed });
+  if (!passed) throw new Error(name);
+}
+</script>
+</html>
