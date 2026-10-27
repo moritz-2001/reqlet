@@ -2880,6 +2880,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "protobuf-catalog"
+version = "0.1.0"
+dependencies = [
+ "prost-reflect",
+ "protox",
+ "serde",
+]
+
+[[package]]
 name = "protox"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3098,7 +3107,7 @@ version = "0.1.0"
 dependencies = [
  "async-compression",
  "encoding_rs",
- "protox",
+ "protobuf-catalog",
  "reqwest 0.12.28",
  "serde",
  "serde_json",

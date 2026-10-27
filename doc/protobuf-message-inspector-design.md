@@ -4,6 +4,12 @@ Status: proposed design, 26 October 2026. The selected direction is a field tree
 first, with an original `.proto` tab. This document describes planned behavior;
 the application currently provides completion and model selection only.
 
+The reusable [protobuf catalog](protobuf-catalog.md) now provides the native data
+foundation: rich fields and enums, declaration locations, captured source files,
+and immutable reload snapshots. Inspector UI and frontend resolution changes
+below remain proposed. The catalog serializes `declaration.location.startLine`
+rather than a separate `line` property, and enum details are in `enumDetails`.
+
 ## User experience
 
 A request's selected protobuf message becomes an inspectable reference beside
@@ -158,7 +164,7 @@ invent map key types, field numbers, enum values, or source locations. New nativ
 loads always supply available descriptor metadata. Real implementation types
 must document every field, including the meaning of omissions.
 
-In [src-tauri/src/protobuf.rs](../src-tauri/src/protobuf.rs), `File::source()` is
+In the [catalog compiler](../crates/protobuf-catalog/src/compile.rs), `File::source()` is
 available in `ProjectResolver::open_file` before the file reaches the compiler.
 Capture each source once there, then return captured text only with a successful
 catalog. A shared collector retained by `load` and the resolver is justified by

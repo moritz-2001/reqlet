@@ -34,6 +34,25 @@ afterEach(() => {
   document.body.replaceChildren();
 });
 
+it("allows selecting an unaffected message while showing diagnostics for skipped files", async () => {
+  const partial = { ...replacementCatalog, loadDiagnostics: ["broken.proto: missing dependency.proto"] };
+  vi.mocked(loadProtobufSource).mockResolvedValueOnce(partial);
+  const app = await render();
+  expect(context(app)?.catalog).toEqual(partial);
+  expect(app.get(".protobuf-settings [role=status]").text()).toContain("Some protobuf files could not be loaded");
+
+  await app.findAll('[aria-label="Request settings"] [role="tab"]').find(tab => tab.text() === "Advanced")!.trigger("click");
+  const search = app.get('.binding-picker [role="combobox"]');
+  await search.trigger("focus");
+  await search.setValue("demo.Other");
+  await search.trigger("keydown", { key: "Enter" });
+  expect(loadWorkspace().workspace.requests["create-workspace"].protobuf?.messageName).toBe("demo.Other");
+
+  await openManager(app);
+  expect(app.get(".protobuf-manager").text()).toContain("Partially loaded");
+  expect(app.get(".protobuf-manager").text()).toContain("broken.proto: missing dependency.proto");
+});
+
 it("loads restored bindings and retains the editor, Undo, and old catalog through a failed reload", async () => {
   const initialLoad = deferred<ProtobufCatalog>();
   vi.mocked(loadProtobufSource).mockReturnValueOnce(initialLoad.promise);

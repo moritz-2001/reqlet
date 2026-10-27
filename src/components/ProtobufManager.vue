@@ -68,6 +68,7 @@ function status(source: ProtobufSource) {
   if (!source.rootPath) return 'Needs relinking';
   if (state?.loading) return state.catalog ? 'Reloading · using previous models' : 'Loading…';
   if (state?.error) return state.catalog ? 'Using previous models · reload failed' : 'Failed to load';
+  if (state?.catalog?.loadDiagnostics?.length) return `Partially loaded · ${Object.keys(state.catalog.messages).length} messages`;
   return state?.catalog ? `Ready · ${Object.keys(state.catalog.messages).length} messages` : 'Not loaded';
 }
 </script>
@@ -102,6 +103,7 @@ function status(source: ProtobufSource) {
         <button class="ui-button" type="button" :aria-label="`Add import directory to ${source.name}`" @click="choose(source, source.includePaths.length)">Add import directory</button>
       </details>
       <details v-if="states[source.id]?.error"><summary>Load diagnostics</summary><pre>{{ states[source.id]?.error }}</pre><p>Check the project folder and import directories, then Reload.</p></details>
+      <details v-if="states[source.id]?.catalog?.loadDiagnostics?.length"><summary>Files that could not be loaded ({{ states[source.id]?.catalog?.loadDiagnostics?.length }})</summary><pre v-for="diagnostic in states[source.id]?.catalog?.loadDiagnostics" :key="diagnostic">{{ diagnostic }}</pre><p>Fix the affected files or import directories, then Reload. Other messages remain available.</p></details>
     </section>
   </dialog>
 </template>

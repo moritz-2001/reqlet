@@ -1,12 +1,9 @@
-// Loads local protobuf projects into a finite editor catalog; ProjectResolver confines imports.
-use protox::prost_reflect::Kind;
-use serde_json::{Value, json};
-use std::{
-    collections::BTreeMap,
-    path::{Path, PathBuf},
-};
+// Adapts the reusable protobuf catalog to the existing Tauri completion command.
+use protobuf_catalog::compile::{self, Project};
+use serde_json::Value;
+use std::path::{Path, PathBuf};
 
-/// Compiles a project off the async runtime, returning only serializable editing metadata.
+/// Compiles a project off the async runtime and serializes one catalog snapshot.
 #[tauri::command]
 pub(super) async fn protobuf_load_source(
     root_path: String,
@@ -14,198 +11,64 @@ pub(super) async fn protobuf_load_source(
 ) -> Result<Value, String> {
     tauri::async_runtime::spawn_blocking(move || load(Path::new(&root_path), &include_paths))
         .await
-        .map_err(|e| e.to_string())?
+        .map_err(|error| error.to_string())?
 }
 
 fn load(root: &Path, includes: &[String]) -> Result<Value, String> {
-    let root = root
-        .canonicalize()
-        .map_err(|e| format!("Project folder {}: {e}", root.display()))?;
-    let mut roots = vec![root.clone()];
-    for include in includes {
-        let path = PathBuf::from(include)
-            .canonicalize()
-            .map_err(|e| format!("Import directory {include}: {e}"))?;
-        if !roots.contains(&path) {
-            roots.push(path);
-        }
-    }
-
-    let mut files = Vec::new();
-    scan(&root, &mut files, &mut 0)?;
-    files.sort();
-    if files.is_empty() {
-        return Err("No .proto files found in this folder.".into());
-    }
-
-    let mut compiler = protox::Compiler::with_file_resolver(ProjectResolver {
-        roots,
-        bytes: std::cell::Cell::new(0),
-        files: std::cell::Cell::new(0),
-    });
-    compiler.include_imports(true).include_source_info(true);
-    compiler.open_files(&files).map_err(|e| format!("{e:?}"))?;
-    let pool = compiler.descriptor_pool();
-    let mut messages = BTreeMap::new();
-    let mut message_files = BTreeMap::new();
-    for message in pool.all_messages().filter(|m| !m.is_map_entry()) {
-        let fields: Vec<Value> = message.fields().map(describe_field).collect();
-        message_files.insert(
-            message.full_name().to_owned(),
-            message.parent_file().name().to_owned(),
-        );
-        messages.insert(message.full_name().to_owned(), fields);
-    }
-    let enums: BTreeMap<_, _> = pool
-        .all_enums()
-        .map(|e| {
-            (
-                e.full_name().to_owned(),
-                e.values().map(|v| v.name().to_owned()).collect::<Vec<_>>(),
-            )
-        })
-        .collect();
-    Ok(json!({"messages":messages, "enums":enums, "messageFiles":message_files}))
-}
-
-fn describe_field(field: protox::prost_reflect::FieldDescriptor) -> Value {
-    let oneof = field
-        .containing_oneof()
-        .filter(|_| {
-            !field
-                .field_descriptor_proto()
-                .proto3_optional
-                .unwrap_or(false)
-        })
-        .map(|group| group.name().to_owned());
-    let map_value = match field.kind() {
-        Kind::Message(message) if field.is_map() => {
-            Some(kind_name(message.map_entry_value_field().kind()))
-        }
-        _ => None,
-    };
-    let mut documentation = field
-        .parent_file()
-        .file_descriptor_proto()
-        .source_code_info
-        .as_ref()
-        .and_then(|info| {
-            info.location
-                .iter()
-                .find(|location| location.path == field.path())
-        })
-        .and_then(|location| location.leading_comments.clone())
-        .unwrap_or_default();
-    if field
-        .field_descriptor_proto()
-        .options
-        .as_ref()
-        .is_some_and(|options| options.deprecated.unwrap_or(false))
-    {
-        documentation = format!("Deprecated. {documentation}");
-    }
-
-    json!({
-        "name": field.name(), "jsonName": field.json_name(), "type": kind_name(field.kind()),
-        "repeated": field.is_list(), "mapValue": map_value, "oneof": oneof,
-        "documentation": documentation,
+    let result = compile::load_partial(&Project {
+        root: root.to_owned(),
+        include_paths: includes.iter().map(PathBuf::from).collect(),
     })
-}
+    .map_err(|error| match error {
+        compile::LoadError::Compilation { source } => format!("{source:?}"),
+        error => error.to_string(),
+    })?;
 
-fn kind_name(kind: Kind) -> String {
-    match kind {
-        Kind::Message(m) => m.full_name().to_owned(),
-        Kind::Enum(e) => e.full_name().to_owned(),
-        other => format!("{other:?}").to_lowercase(),
-    }
-}
-
-fn scan(directory: &Path, files: &mut Vec<PathBuf>, bytes: &mut u64) -> Result<(), String> {
-    for entry in std::fs::read_dir(directory).map_err(|e| e.to_string())? {
-        let entry = entry.map_err(|e| e.to_string())?;
-        let metadata = entry.file_type().map_err(|e| e.to_string())?;
-        if metadata.is_symlink() {
-            continue;
-        }
-        if metadata.is_dir() {
-            scan(&entry.path(), files, bytes)?;
-        } else if entry.path().extension().is_some_and(|ext| ext == "proto") {
-            *bytes += entry.metadata().map_err(|e| e.to_string())?.len();
-            files.push(entry.path());
-            if files.len() > 10000 || *bytes > 32 * 1024 * 1024 {
-                return Err("Protobuf project exceeds 10,000 files or 32 MiB.".into());
-            }
-        }
-    }
-    Ok(())
-}
-
-/// Resolves only canonical files within configured roots, including imported dependencies.
-struct ProjectResolver {
-    /// Canonical, distinct roots in configuration order; the project root comes first so
-    /// discovered source paths retain their project-relative names.
-    roots: Vec<PathBuf>,
-    /// Total source bytes opened during this compilation, including imported dependencies.
-    bytes: std::cell::Cell<u64>,
-    /// Number of opened sources in this compilation; together with bytes, bounds the import graph.
-    files: std::cell::Cell<usize>,
-}
-impl protox::file::FileResolver for ProjectResolver {
-    fn resolve_path(&self, path: &Path) -> Option<String> {
-        self.roots.iter().find_map(|root| {
-            path.strip_prefix(root)
-                .ok()?
-                .to_str()
-                .map(|s| s.replace('\\', "/"))
-        })
-    }
-
-    fn open_file(&self, name: &str) -> Result<protox::file::File, protox::Error> {
-        if Path::new(name)
-            .components()
-            .any(|part| !matches!(part, std::path::Component::Normal(_)))
-        {
-            return Err(protox::Error::file_not_found(name));
-        }
-        let mut found = None;
-        for root in &self.roots {
-            let candidate = root.join(name);
-            if !candidate.exists() {
-                continue;
-            }
-            let path = candidate
-                .canonicalize()
-                .map_err(|_| protox::Error::file_not_found(name))?;
-            if !path.starts_with(root) {
-                return Err(protox::Error::file_not_found(name));
-            }
-            // Overlapping roots can expose the same canonical file more than once.
-            if let Some(previous) = &found {
-                if previous != &path {
-                    return Err(protox::Error::file_not_found(name));
-                }
-            } else {
-                found = Some(path);
-            }
-        }
-        if let Some(path) = found {
-            let size = std::fs::metadata(&path)
-                .map_err(|_| protox::Error::file_not_found(name))?
-                .len();
-            self.bytes.set(self.bytes.get() + size);
-            self.files.set(self.files.get() + 1);
-            if self.bytes.get() > 32 * 1024 * 1024 || self.files.get() > 10000 {
-                return Err(protox::Error::file_not_found(name));
-            }
-            return protox::file::File::open(name, &path);
-        }
-        protox::file::GoogleFileResolver::new().open_file(name)
-    }
+    let mut snapshot =
+        serde_json::to_value(result.catalog.to_snapshot()).map_err(|error| error.to_string())?;
+    snapshot["loadDiagnostics"] = serde_json::json!(
+        result
+            .failures
+            .into_iter()
+            .map(|failure| {
+                let detail = match failure.error {
+                    compile::LoadError::Compilation { source } => format!("{source:?}"),
+                    error => error.to_string(),
+                };
+                format!("{}: {detail}", failure.file.display())
+            })
+            .collect::<Vec<_>>()
+    );
+    Ok(snapshot)
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serde_json::json;
+
+    #[test]
+    fn returns_valid_messages_and_diagnostics_for_failed_files() {
+        let directory = fixture();
+        std::fs::write(
+            directory.join("broken.proto"),
+            "syntax = \"proto3\"; import \"missing.proto\";",
+        )
+        .unwrap();
+        std::fs::write(
+            directory.join("valid.proto"),
+            "syntax = \"proto3\"; message Valid {} ",
+        )
+        .unwrap();
+
+        let catalog = load(&directory, &[]).unwrap();
+        assert!(catalog["messages"]["Valid"].is_array());
+        let diagnostics = catalog["loadDiagnostics"].as_array().unwrap();
+        assert_eq!(diagnostics.len(), 1);
+        assert!(diagnostics[0].as_str().unwrap().contains("missing.proto"));
+        assert!(diagnostics[0].as_str().unwrap().contains("broken.proto"));
+        std::fs::remove_dir_all(directory).unwrap();
+    }
 
     #[test]
     fn loads_imports_json_names_maps_and_recursive_messages() {

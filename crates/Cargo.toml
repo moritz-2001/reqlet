@@ -1,6 +1,6 @@
-# Keeps reusable browser computations separate from the native Tauri application.
+# Keeps reusable libraries separate from the native Tauri application.
 [workspace]
-members = ["json-formatter", "json-formatter-wasm", "body-search", "body-search-wasm"]
+members = ["json-formatter", "json-formatter-wasm", "body-search", "body-search-wasm", "protobuf-catalog"]
 resolver = "3"
 
 [profile.release]

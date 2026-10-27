@@ -1,0 +1,18 @@
+# Provides protobuf project snapshots without depending on an editor or application runtime.
+[package]
+name = "protobuf-catalog"
+version = "0.1.0"
+edition = "2024"
+description = "Immutable protobuf catalogs with source context, navigation, and JSON semantics"
+
+[features]
+default = ["compile"]
+compile = ["dep:protox"]
+
+[dependencies]
+prost-reflect = "0.16.5"
+protox = { version = "0.10.0", optional = true }
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"

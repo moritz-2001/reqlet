@@ -44,6 +44,8 @@ export interface ProtobufCatalog {
   messageFiles?: Record<string, string>;
   /** Symbolic enum values keyed by fully qualified identity. */
   enums: Record<string, string[]>;
+  /** Failed entry-point diagnostics; absent in older catalogs or empty after a complete load. */
+  loadDiagnostics?: string[];
 }
 /** Runtime state; a failed reload can retain a stale catalog. */
 export interface ProtobufSourceState {
@@ -111,6 +113,9 @@ export function resolveProtobufAssistance(
     return { label: source.name, status: 'Loading protobuf models…', action: 'manage' };
   }
   if (!context) {
+    if (!state?.error && catalog?.loadDiagnostics?.length && binding.messageName) {
+      return { label: source.name, status: 'Message unavailable. Some protobuf files could not be loaded.', action: 'manage' };
+    }
     const status = state?.error ?? (binding.messageName
       ? 'Message unavailable. Choose another message or reload the source.' : 'Choose a message.');
     return { label: source.name, status, action: state?.error ? 'manage' : 'select' };
@@ -122,11 +127,12 @@ export function resolveProtobufAssistance(
   if (!json) status = 'Inactive: select a JSON content type.';
   else if (state?.loading) status = 'Reloading; completion uses previous models.';
   else if (state?.error) status = 'Using previous models: reload failed.';
+  else if (context.catalog.loadDiagnostics?.length) status = 'Ready · Some protobuf files could not be loaded.';
 
   return {
     label: `${source.name} / ${binding.messageName}`,
     status,
-    action: state?.error ? 'manage' : 'select',
+    action: state?.error || context.catalog.loadDiagnostics?.length ? 'manage' : 'select',
     context: json ? context : undefined,
   };
 }

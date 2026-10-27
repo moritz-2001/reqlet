@@ -435,6 +435,15 @@ and the installation and verification procedure.
 message bindings, native catalog loading, and schema-aware JSON completion.
 App owns source lifetimes; editors consume immutable catalogs without changing
 HTTP preparation or captured execution snapshots.
+The reusable [`protobuf-catalog` crate](../crates/protobuf-catalog/src/lib.rs)
+owns the protobuf descriptor graph, captured source snapshot, declaration handles,
+reverse references, and JSON representation views. Its optional compiler loads
+local projects; descriptor-only construction needs no filesystem or Tauri runtime.
+[`CatalogSnapshot`](../crates/protobuf-catalog/src/snapshot.rs) projects that graph
+to the existing completion payload plus additive rich metadata.
+[`protobuf.rs`](../src-tauri/src/protobuf.rs) is the blocking-task/serialization
+adapter. See [catalog architecture and usage](protobuf-catalog.md) for the public
+interface and snapshot lifetime contract.
 [ProtobufBindingPicker.vue](../src/components/ProtobufBindingPicker.vue) owns transient
 message searches and commits controlled bindings only on selection. The pure
 [resolveProtobufAssistance](../src/protobuf.ts) derives MIME-aware context, status,
@@ -454,7 +463,8 @@ once through that shared source-identity map.
 The proposed [message inspector](protobuf-message-inspector-design.md) adds a
 read-only field tree and exact source view backed by the same runtime catalog.
 It separates model resolution from completion's MIME gate and keeps inspection
-state in the request editor. This design is not implemented yet.
+state in the request editor. The catalog now supplies rich metadata and captured
+source; the inspector UI and frontend model resolver are not implemented yet.
 
 ## Shared presentation
 

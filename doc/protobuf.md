@@ -8,6 +8,15 @@ selections are ignored. Loading also deduplicates canonical directories, so addi
 the project folder itself, an equivalent path such as `models/../models`, or a
 symlink to an existing root remains valid. Load diagnostics retain the compiler
 details, and inaccessible directories show a local recovery hint.
+If some files fail to compile, the app still offers messages from independent
+files that loaded successfully. The source manager marks the catalog as partially
+loaded and lists the failed files and their diagnostics. Files depending on a
+failed import cannot contribute messages until the problem is fixed and the
+source is reloaded. If no entry point loads, an earlier catalog remains available
+as stale data when possible.
+Protobuf well-known types and the Google HTTP annotation files
+`google/api/annotations.proto` and `google/api/http.proto` are bundled. Other
+third-party imports still need an import directory containing their logical paths.
 Use Reload after changing files, or Relink after moving the project. The manager is a modal dialog: focus moves to Add protobuf folder, Escape/Close dismiss it, and focus returns to the opener. Removing a source offers one Undo snapshot with its original identity and position, restoring existing request selections; the snapshot lasts until another removal or application restart. Usage counts include saved requests and drafts.
 
 In a request's **Advanced → Protobuf completion** section, select its source and
@@ -40,13 +49,19 @@ to see `firstName` and `featureFlags`, or type an enum prefix inside
   separate persistent configuration from runtime schemas. RequestData has optional
   `protobuf` metadata; workspace sources are additive optional data for backwards
   compatibility. An omitted sources list means no models are configured.
-- [`protobuf.rs`](../src-tauri/src/protobuf.rs) compiles sources using protox in a
-  blocking task. Its resolver confines imports to canonical configured roots,
+- [`protobuf-catalog`](../crates/protobuf-catalog/src/lib.rs) provides immutable
+  protobuf models, source snapshots, rich metadata, references, and JSON views.
+  [Its usage and architecture](protobuf-catalog.md) describe the Rust interface.
+  [`protobuf.rs`](../src-tauri/src/protobuf.rs) calls its optional protox compiler
+  in a blocking task and serializes a typed catalog snapshot with partial-load
+  diagnostics. The crate's
+  resolver confines imports to canonical configured roots,
   deduplicates equivalent roots, and bounds project inputs. A canonical file
   reachable through more than one root is a single import candidate. Different
   files with the same relative import name remain ambiguous even when their
   contents match; fix the import directories instead of relying on root order.
-  Standard imports are built in. Directory symlinks are skipped during root
+  Protobuf well-known types and Google HTTP annotation imports are built in;
+  configured local files take precedence. Directory symlinks are skipped during root
   discovery.
 - [`App.vue`](../src/App.vue) owns catalogs and load generations. Failed reloads
   retain a visibly stale catalog; changing paths clears it. Late results cannot
